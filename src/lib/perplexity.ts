@@ -68,8 +68,5 @@ export async function generateFlashcardsWithSearch(
         ],
         temperature: perplexityConfig.temperature,
         max_tokens: perplexityConfig.maxTokens,
-        search_domain_filter: searchDomains,
-        search_recency_filter: recencyFilter,
-        return_citations: true,
     });
 }

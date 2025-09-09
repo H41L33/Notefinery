@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@clerk/nextjs';
+import { auth } from '@clerk/nextjs/server';
 import { prisma } from '@/lib/prisma';
 import OpenAI from 'openai';
 
@@ -11,7 +11,7 @@ const perplexity = new OpenAI({
 
 export async function POST(request: NextRequest) {
     try {
-        const { userId } = auth();
+        const { userId } = await auth();
         if (!userId) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
         }
@@ -35,10 +35,6 @@ export async function POST(request: NextRequest) {
             temperature: 0.3, // Lower temperature for more consistent educational content
             max_tokens: 3000, // Increased token limit for comprehensive flashcards
             // Perplexity-specific parameters for enhanced search capabilities
-            search_domain_filter: ["edu", "gov", "org"], // Focus on educational and authoritative sources
-            search_recency_filter: "month", // Use recent information when relevant
-            return_citations: true, // Include citations for factual information
-            return_related_questions: false // Don't include related questions in the response
         });
 
         let flashcards;
