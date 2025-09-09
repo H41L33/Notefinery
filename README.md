@@ -1,3 +1,6 @@
+# Notefinery
+An AI-First notetaking app designed for you to take notes quickly, and then generate structured revision material later.
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
